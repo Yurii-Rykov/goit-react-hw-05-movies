@@ -2,17 +2,20 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import Home from './Home/Home';
 import Movies from './Movies/Movies';
+import MovieDetails from './MovieDetails/MovieDetails';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
+// import axiosRequest from '../service/api'
 
 
 function App() {
 return(
   <>
   <Routes>
-    <Route putch='/' element={<Layout />}>
-      <Route index putch='/' element={<Home />} />
-      <Route putch='/Movies' element={<Movies />} />
-      <Route putch='*' element={<NotFoundPage />} />
+    <Route path="/" element={<Layout />}>
+      <Route index path="/" element={<Home />} />
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/movies/:movieId/*" element={<MovieDetails />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
   </>

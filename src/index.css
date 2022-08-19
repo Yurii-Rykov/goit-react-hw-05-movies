@@ -41,6 +41,8 @@ img {
   height: auto;
 }
 
-
+.active {
+  font-size: 30px;
+}
 
 

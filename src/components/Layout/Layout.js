@@ -1,16 +1,19 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import s from './Layout.module.css'
 
 const Layout = () => {
     return(
         <>
-        <header>
-            <Link to='/'>Home</Link>
-            <Link to='/Movies'>Movies</Link>
+        <header className={s.container}>
+            <nav>
+                <NavLink to="/" className={s.title}>Home</NavLink>
+                <NavLink to="/movies">Movies</NavLink>
+            </nav>
         </header>
-
+        <main className={s.container}>
         <Outlet />
-
-        <footer>2022</footer>
+        </main>
+        <footer className={s.container}>2022</footer>
         </>
     )
 }
