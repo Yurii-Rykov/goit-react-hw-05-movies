@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Home.module.css';
 import { API } from '../../services/api.js';
@@ -7,9 +7,12 @@ import { API } from '../../services/api.js';
 const Home = () => {
   const [data, setData] = useState([]);
 
+  useEffect(() => {
+    
   API.trending().then(res => {
     setData(res.data.results);
   });
+  }, [])
 
   return (
     <>

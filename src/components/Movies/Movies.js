@@ -27,7 +27,6 @@ const Movies = () => {
     if (word === '') {
       return;
     }
-
     API.movie(word).then(res => setMovies(res.data.results));
   }, [word]);
 
