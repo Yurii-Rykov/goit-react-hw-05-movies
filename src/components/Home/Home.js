@@ -12,7 +12,7 @@ const Home = () => {
         try{
             const response = await axios({
                 method: 'get',
-                url: `https:api.themoviedb.org/3/trending/all/day?api_key=7e27a31a64f35e2d3f45ab72b99097a8`,
+                url: `https:api.themoviedb.org/3/trending/movie/day?api_key=7e27a31a64f35e2d3f45ab72b99097a8`,
             })
             return response;
         }catch(error) {
