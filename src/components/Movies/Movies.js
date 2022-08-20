@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
-// import { toast } from 'react-toastify'
-const axios = require('axios').default;
+import { API } from '../../services/api.js';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -30,19 +28,7 @@ const Movies = () => {
       return;
     }
 
-    async function movieApi() {
-      try {
-        const response = await axios({
-          method: 'get',
-          url: `https://api.themoviedb.org/3/search/movie?api_key=7e27a31a64f35e2d3f45ab72b99097a8&language=en-US&page=1&query=${word}&include_adult=false`,
-        });
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    movieApi().then(res => setMovies(res.data.results));
+    API.movie(word).then(res => setMovies(res.data.results));
   }, [word]);
 
   return (
@@ -61,7 +47,13 @@ const Movies = () => {
       {movies.length && (
         <ul>
           {movies.map(el => {
-            return <li key={el.id}><Link key={el.id} to={`/movies/${el.id}`}>{el.title}</Link></li>;
+            return (
+              <li key={el.id}>
+                <Link key={el.id} to={`/movies/${el.id}`}>
+                  {el.title}
+                </Link>
+              </li>
+            );
           })}
         </ul>
       )}
