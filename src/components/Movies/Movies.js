@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { API } from '../../services/api.js';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
   const [word, setWord] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const nameSearch = event => {
     setSearch(event.currentTarget.value.toLowerCase());
@@ -19,16 +20,22 @@ const Movies = () => {
       alert('no');
       return;
     }
+
+    setSearchParams({query: search});
     setWord(search);
     setSearch('');
   };
 
   useEffect(() => {
+    const query = searchParams.get('query') || '';
+    if(query !== word){
+      setWord(query) 
+    } 
     if (word === '') {
       return;
     }
     API.movie(word).then(res => setMovies(res.data.results));
-  }, [word]);
+  }, [word, searchParams]);
 
   return (
     <div>
@@ -43,7 +50,7 @@ const Movies = () => {
         <button type="submit">Search</button>
       </form>
 
-      {movies.length && (
+      {movies.length > 0 && (
         <ul>
           {movies.map(el => {
             return (
