@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 export const API = {
-  trending: async function () {
+  trending: async  () => {
     try {
       const response = await axios({
         method: 'get',
@@ -25,7 +25,7 @@ export const API = {
     }
   },
 
-  infoCart: async function infoCart(movieId) {
+  infoCart: async (movieId) => {
     try {
       const response = await axios({
         method: 'get',
@@ -37,7 +37,7 @@ export const API = {
     }
   },
 
-  cast: async function castApi(movieId) {
+  cast: async (movieId) => {
     try {
       const response = await axios({
         method: 'get',
@@ -49,7 +49,7 @@ export const API = {
     }
   },
 
-  reviews: async function reviewsApi(movieId) {
+  reviews: async (movieId) => {
     try {
       const response = await axios({
         method: 'get',
