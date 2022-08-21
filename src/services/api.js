@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 export const API = {
-  trending: async function apiTrending() {
+  trending: async function () {
     try {
       const response = await axios({
         method: 'get',
@@ -13,7 +13,7 @@ export const API = {
     }
   },
 
-  movie: async function searchMovie(word) {
+  movie: async (word) => {
     try {
       const response = await axios({
         method: 'get',
