@@ -3,10 +3,10 @@ const axios = require('axios').default;
 export const API = {
   trending: async  () => {
     try {
-      const response = await axios({
-        method: 'get',
-        url: `https:api.themoviedb.org/3/trending/movie/day?api_key=7e27a31a64f35e2d3f45ab72b99097a8`,
-      });
+      const response = await axios.get(
+       
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=7e27a31a64f35e2d3f45ab72b99097a8`,
+      );
       return response;
     } catch (error) {
       console.log(error);
