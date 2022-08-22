@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { API } from '../../services/api.js';
+import s from './Movies.module.css'
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -38,7 +39,7 @@ const Movies = () => {
   }, [word, searchParams]);
 
   return (
-    <div>
+    <div className={s.wrapper}>
       <form onSubmit={submitSerch}>
         <input
           type="text"

@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Outlet, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
 import { API } from 'services/api';
+import s from './MovieDetails.module.css'
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
+  const Cast = lazy(() => import('components/Cast/Cast'));
+  const Reviews = lazy(() => import('components/Reviews/Reviews'));
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -17,37 +23,45 @@ const MovieDetails = () => {
     <div>
       {movie && (
         <>
-          <button type="button" onClick={goBack}>
+          <section className={s.wrapper}>
+          <button type="button" onClick={goBack} className={s.button}>
             Go back
           </button>
-          <section>
             <img
               src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
               alt={movie.title}
+              className={s.img}
             />
-            <h2>{movie.title}</h2>
-            <p>Vote_average: {movie.vote_average}</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
+          <div className={s.wrapperForInfo}>
+            <h2 className={s.title}>{movie.title}</h2>
+            <p className={s.text}><span className={s.span}>Vote_average:</span> {movie.vote_average}</p>
+            <h3 className={s.secondTitle}>Overview:</h3>
+            <p className={s.text}>{movie.overview}</p>
+            <h3 className={s.secondTitle}>Genres:</h3>
+            <div className={s.wrapperGenres}>
             {movie.genres.map(el => {
-              return <p key={el.id}>{el.name}</p>;
+              return  <p key={el.id} className={s.textGenres}>{el.name}</p>;
             })}
+            </div>
 
-            <h3>Additional information</h3>
-            <ul>
-              <li>
-                <Link to={'cast'}>Cast</Link>
+            <h3 className={s.secondTitle}>Additional information:</h3>
+            <ul className={s.list}>
+              <li className={s.item}>
+                <Link to={'cast'} className={s.link}>Cast</Link>
               </li>
-              <li>
-                <Link to={'reviews'}>Reviews</Link>
+              <li className={s.item}>
+                <Link to={'reviews'} className={s.link}>Reviews</Link>
               </li>
             </ul>
+          </div>              
           </section>
 
-          <section>
-            <Outlet />
-          </section>
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Routes>
+          </Suspense>
         </>
       )}
     </div>

@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1E252B;
 }
 
 code {
@@ -24,16 +25,11 @@ html {
 *::after {
   box-sizing: inherit;
 }
-
-body {
+p, ul {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  color: #212121;
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
+
 
 img {
   display: block;
@@ -42,7 +38,12 @@ img {
 }
 
 .active {
-  font-size: 30px;
+ color: #2A343C;
 }
+
+.active:hover {
+  border-color: #2A343C;
+}
+
 
 

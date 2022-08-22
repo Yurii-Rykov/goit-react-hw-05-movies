@@ -1,2 +1,16 @@
-
-  
+.wrapper {
+    padding-bottom: 30px;
+}
+.item {
+    list-style-type: none;
+}
+.title {
+    font: 700 1.5em 'Oswald', sans-serif;
+    color: #546778;
+}
+.span {
+    color: #ffffff;
+}
+.text {
+    color: #ffffff;
+}

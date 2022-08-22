@@ -7,21 +7,27 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    
-  API.trending().then(res => {
-    setData(res.data.results);
-  });
-  }, [])
+    API.trending().then(res => {
+      setData(res.data.results);
+    });
+  }, []);
 
   return (
     <>
-      <h1 className={s.title}>Tranding today</h1>
+      <h1 className={s.title}><span className={s.span}>Tranding</span> today</h1>
 
-      <ul>
+      <ul className={s.movies}>
         {data.map(({ poster_path, id, name, title }) => (
-          <Link key={id} to={`/movies/${id}`}>
-            <li> {name !== undefined ? name : title}</li>
-          </Link>
+          <li key={id} className={s.movies_item}>
+            <Link to={`/movies/${id}`} className={s.link}>
+              <img
+                src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                alt={title}
+                className={s.movies_img}
+              />
+              <p className={s.name} >{name !== undefined ? name : title}</p>
+            </Link>
+          </li>
         ))}
       </ul>
     </>
@@ -29,4 +35,3 @@ const Home = () => {
 };
 
 export default Home;
-

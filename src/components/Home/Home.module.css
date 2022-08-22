@@ -1,0 +1,49 @@
+.title {
+  text-align: center;
+  font: 400 2em/2 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #546778;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+}
+
+.span {
+  color: #ffffff;
+}
+
+.title:first-letter {
+  color: #546778;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding-bottom: 30px;
+}
+
+.movies_img {
+  min-width: 350px;
+}
+
+.movies_item {
+  list-style-type: none;
+  width: 350px;
+}
+
+.name {
+  margin-top: 30px;
+  font: 400 1em 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+}
+
+.link:hover .name,
+.link:focus .name {
+  color: #546778;
+}
