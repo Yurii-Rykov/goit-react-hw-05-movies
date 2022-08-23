@@ -41,8 +41,8 @@ img {
  color: #2A343C;
 }
 
-.active:hover {
-  border-color: #2A343C;
+ .active:first-letter{
+    color: #ffffff;
 }
 
 

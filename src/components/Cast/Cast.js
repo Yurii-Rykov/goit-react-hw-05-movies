@@ -15,17 +15,22 @@ const Cast = () => {
   return (
     <>
       <ul className={s.wrapper}>
-        {hero.map(el => (
-          <li key={el.id} className={s.item}>
+        {hero.map(({id, profile_path, name, character }) => {
+          const path = profile_path
+          ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+          : 'https://upload.wikimedia.org/wikipedia/commons/4/47/GarvaGriha_in_KaryaBinayak.jpg';
+
+          return (
+          <li key={id} className={s.item}>
             <img
-              src={`https://image.tmdb.org/t/p/w300/${el.profile_path}`}
-              alt="el.name"
+              src={path}
+              alt={name}
               className={s.img}
             />
-            <h3 className={s.name}>{el.name}</h3>
-            <p className={s.text}>Character: {el.character}</p>
+            <h3 className={s.name}>{name}</h3>
+            <p className={s.text}>Character: {character}</p>
           </li>
-        ))}
+        )})}
       </ul>
     </>
   );

@@ -1,3 +1,8 @@
+.Layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -41,4 +46,8 @@
   text-align: center;
   color: #2A343C;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+}
+
+.footer {
+  margin-top: auto;
 }

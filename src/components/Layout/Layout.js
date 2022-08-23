@@ -3,7 +3,7 @@ import s from './Layout.module.css'
 
 const Layout = () => {
     return (
-        <>
+        <div className={s.Layout}>
             <header className={s.wrapper}>
                 <nav className={s.nav}>
                     <NavLink to="/" className={s.title}><p>Home</p></NavLink>
@@ -13,12 +13,12 @@ const Layout = () => {
             <main className={s.container}>
                 <Outlet />
             </main>
-            <footer className={s.wrapper}>
+            <footer className={`${s.wrapper} ${s.footer}`}>
                 <div className={s.container}>
                     <p className={s.text}>Kyiv city. 2022</p>
                 </div>
             </footer>
-        </>
+        </div>
     )
 }
 

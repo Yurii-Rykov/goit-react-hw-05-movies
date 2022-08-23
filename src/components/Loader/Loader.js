@@ -8,7 +8,7 @@ const Loader = () => {
         height="180"
         width="180"
         radius="9"
-        color="#3F51B5"
+        color="#546778"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}
         wrapperClassName=""

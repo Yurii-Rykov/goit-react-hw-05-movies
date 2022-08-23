@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader'
 import s from './Home.module.css';
-import { API } from '../../services/api.js';
+import { API } from '../../services/api';
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     API.trending().then(res => {
       setData(res.data.results);
+      setLoading(false)
     });
   }, []);
 
@@ -21,7 +25,7 @@ const Home = () => {
           <li key={id} className={s.movies_item}>
             <Link to={`/movies/${id}`} className={s.link}>
               <img
-                src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={title}
                 className={s.movies_img}
               />
@@ -30,6 +34,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      {loading && <Loader />}
     </>
   );
 };
